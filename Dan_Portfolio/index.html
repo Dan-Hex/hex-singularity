@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan John Cleofe | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="lightbox-content" id="lightbox-content">
+    <button class="lightbox-close" onclick="document.getElementById('lightbox').classList.remove('open')">✕</button>
+    <div id="lightbox-gallery" class="lightbox-gallery"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-logo">Dan<span>.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#home" onclick="closeMenu()">Home</a></li>
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section id="home">
+  <div class="home-inner">
+    <div class="home-text">
+      <span class="home-greeting">Welcome to my Portfolio</span>
+      <h1 class="home-name">Dan John<br /><em>Cleofe</em></h1>
+      <p class="home-tagline">
+        An Information Technology student passionate about Graphic Design,
+         Web Development, and building creative digital experiences.
+      </p>
+      <div class="home-buttons">
+        <a href="#projects" class="btn-primary">
+          View my Works
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        
+        <a href="Cleofe_Resume.pdf" target="_blank" rel="noopener" class="btn-secondary">
+          Download CV
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 11V3M8 11L11.5 7.5M8 11L4.5 7.5M3 14H13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="home-image-wrap">
+      <div class="home-image">
+        <img src="img/My_pic.jpg" alt="Dan John Cleofe" class="home-photo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <p class="section-label fade-up">Get to know me</p>
+    <h2 class="section-title fade-up">About <span>Me</span></h2>
+    <div class="divider fade-up"></div>
+
+    <div class="about-grid">
+      <div class="about-bio fade-up">
+        <p>Hi! I'm <strong>Dan John Cleofe</strong>, an Information Technology student from Pamantasan ng Lungsod
+          ng Valenzuela. I am passionate about creating Graphic Designs and Web Development, while exploring the field
+          of Information Technology. I enjoy exploring different aspects of design and development, while building skills
+        that can contribute to meaningful solutions.</p>
+        <p>My background spans Visual Design, Web wireframes, and artistic expression towards different mediums in both
+          graphic design and website making. Although I am still developing my skills, I am committed to continuous
+           learning and improvement.</p>
+        <p>My goal is to create more Graphical Designs to express my thoughts and ideas, as well as showcasing my skills
+           in making artistic outputs. To improve my skills in creating impactful wireframes to develop websites that 
+           serves better user experience and ambiance, and to explore more designs online. I am eager to learn more and create
+           more design outputs that can be appreciated by others, and aim to deliver a more satisfying experience in the field
+            of design and web development.
+        </p>
+      </div>
+
+      <div class="about-skills fade-up">
+        <h3 class="skills-heading">Skills & Tools</h3>
+        <p class="skills-subtext">The tools and technologies below help me turn ideas into functional and engaging digital experiences:</p>
+
+        <!-- Development Category -->
+        <div class="skill-category">
+          <h4 class="category-title"><span>&lt;/&gt;</span> Development</h4>
+          <div class="skills-grid">
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/html5" width="16" height="16" alt="HTML5" /> HTML</div>
+            
+            <div class="skill-chip">
+              <svg width="16" height="16" fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CSS</title><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></svg>
+              CSS
+            </div>
+
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/javascript" width="16" height="16" alt="JavaScript" /> JavaScript</div>
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/php" width="16" height="16" alt="PHP" /> PHP</div>
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/mysql" width="16" height="16" alt="MySQL" /> MySQL</div>
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/flutter" width="16" height="16" alt="Flutter" /> Flutter</div>
+          </div>
+        </div>
+
+        <div class="skill-category">
+          <h4 class="category-title"><span>🎨</span> Design</h4>
+          <div class="skills-grid">
+            <div class="skill-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+              UI/UX Design
+            </div>
+            
+            <div class="skill-chip"><img src="https://cdn.simpleicons.org/figma" width="16" height="16" alt="Figma" /> Figma</div>
+            
+            <!-- Canva Substitute: Canvas & Image -->
+            <div class="skill-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              Canva
+            </div>
+            
+            <div class="skill-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Web Design
+            </div>
+            
+            <!-- Adobe PS Substitute: "Ps" in a Box -->
+            <div class="skill-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><path d="M7 8h3c1.5 0 2.5 1 2.5 2.5S11.5 13 10 13H7v4"/><path d="M14 16.5c0 .8.7 1.5 1.5 1.5 1 0 2-.7 2-1.5s-.8-1.5-2-1.5-1.5-.7-1.5-1.5c0-.8.7-1.5 1.5-1.5 1.2 0 1.8.6 2 1"/></svg>
+              Adobe PS
+            </div>
+            
+            <!-- Affinity Substitute: Geometric 'A' / Prism -->
+            <div class="skill-chip">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 14v8"/><path d="M8 10h8"/></svg>
+              Affinity
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label fade-up">What I've built</p>
+    <h2 class="section-title fade-up">My <span>Projects</span></h2>
+    <div class="divider fade-up"></div>
+
+    <div class="project-filter fade-up">
+      <button class="filter-btn active" onclick="switchCategory('web', this)">🖥️ Programming Projects</button>
+      <button class="filter-btn" onclick="switchCategory('gfx', this)">🎨 Graphic Design</button>
+    </div>
+
+    <div id="panel-web" class="category-panel active fade-up">
+      <div class="carousel-wrap">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="webTrack">
+
+            <div class="project-card-web" style="cursor: pointer;" onclick="openProjectGallery([
+              'img/OOP_1.png',
+              'img/OOP_2.png',
+              'img/OOP_3.png',
+              'img/OOP_4.png',
+              'img/OOP_5.png',
+              'img/OOP_6.png',
+              'img/OOP_7.png',
+              'img/OOP_8.png',
+              'img/OOP_9.png',
+              'img/OOP_10.png'
+              ])">
+              <div class="project-img-wrap">
+                <img src="img/OOP_1.png" alt="OOP Final Project Preview">
+              </div>
+              <div class="project-info">
+                <p class="project-tag">Object-Oriented Programming</p>
+                <h3 class="project-title">OOP Final Project</h3>
+                <p class="project-desc">
+                  My final project for Object-Oriented Programming class, built using C# and Winforms.
+                   This project is a student hub windows application that allows students to view
+                    their compilation of OOP projects, such as a Simple Calculator, Student Form, Student GWA, and more.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">C#</span>
+                  <span class="tech-badge">Winforms</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card-web" style="cursor: pointer;" onclick="openProjectGallery([
+              'img/Nel_2.jpg',
+              'img/Nel_3.jpg',
+              'img/Nel_4.jpg',
+              'img/Nel_5.jpg',
+              'img/Nel_6.jpg',
+              'img/Nel_7.jpg'
+              ])">
+              <div class="project-img-wrap">
+                <img src="img/Nel_1.jpg" alt="Nelticity Perfume Website Preview">
+              </div>
+              <div class="project-info">
+                <p class="project-tag">Web Systems and Technology</p>
+                <h3 class="project-title">Nelticity Perfume</h3>
+                <p class="project-desc">
+                  My final project for Web Systems and Technology class, built using HTML, CSS, and JavaScript.
+                   This project is a responsive e-commerce website for Nelticity, a local Perfume brand. It features a 
+                   product catalog to showcase the products and the story behind the brand.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">JavaScript</span>
+                  <span class="tech-badge">PHP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card-web" style="cursor: pointer;" onclick="openProjectGallery([
+              'img/Attend_1.png',
+              'img/Attend_2.png',
+              'img/Attend_3.png',
+              'img/Attend_4.png',
+              'img/Attend_5.png',
+              'img/Attend_6.jpg'
+              ])">
+              <div class="project-img-wrap">
+                <img src="img/Attend_1.png" alt="Attendify Website Preview">
+              </div>
+              <div class="project-info">
+                <p class="project-tag">Software Development</p>
+                <h3 class="project-title">Attendify</h3>
+                <p class="project-desc">
+                  Our project in Software Development, built using HTML, CSS, and JavaScript.
+                   Attendify is a fully digitalized attendance tracking system across the campus, it allows the designated
+                   checkers to easily monitor and verify each professor's attendances.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">JavaScript</span>
+                  <span class="tech-badge">JSON</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card-web" style="cursor: pointer;" onclick="openProjectGallery([
+              'img/TailTown_1.png',
+              'img/TailTown_2.png',
+              'img/TailTown_3.png',
+              'img/TailTown_4.png',
+              'img/TailTown_5.png',
+              'img/TailTown_6.jpg',
+              'img/TailTown_7.jpg'
+              ])">
+              <div class="project-img-wrap">
+                <img src="img/App_icon.png" alt="TailTown Mobile App Preview">
+              </div>
+              <div class="project-info">
+                <p class="project-tag">Capstone 1</p>
+                <h3 class="project-title">TailTown</h3>
+                <p class="project-desc">
+                  My Capstone Project for Capstone 1 and 2, built using Google's Fluter and Dart along with Firebase.
+                   TailTown is a mobile application tailored for pet owners, providing a comprehensive platform to 
+                   locate all Vet Clinics in Valenzuela City up to looking for nearby Vet Clinics using the Smart AI system.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-badge">Flutter</span>
+                  <span class="tech-badge">Dart</span>
+                  <span class="tech-badge">Firebase</span>
+                  <span class="tech-badge">JSON</span>
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">JavaScript</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel('web', -1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-dots" id="webDots"></div>
+          <button class="carousel-btn" onclick="moveCarousel('web', 1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="panel-gfx" class="category-panel fade-up">
+      <div class="carousel-wrap">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="gfxTrack">
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Cover_Page.png'])">
+              <img src="img/Cover_Page.png" alt="Oceans and Engines Book Cover">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Oceans_and_Engines.png'])">
+              <img src="img/Oceans_and_Engines.png" alt="Oceans and Engines Book Cover">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Squid_Game.png'])">
+              <img src="img/Squid_Game.png" alt="Squid Game Poster">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Green_Gang.png'])">
+              <img src="img/Green_Gang.png" alt="Green Gang Brushes">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Tokyo.png'])">
+              <img src="img/Tokyo.png" alt="Tokyo Cityscape">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Kambing.png'])">
+              <img src="img/Kambing.png" alt="Kambing Logo">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Void_Cat.png'])">
+              <img src="img/Void_Cat.png" alt="Void Cat">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Coffee_Minimal.png'])">
+              <img src="img/Coffee_Minimal.png" alt="Coffee Minimal">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Game_Map.png'])">
+              <img src="img/Game_Map.png" alt="Tabletop Game Map">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Big_Siomai.png'])">
+              <img src="img/Big_Siomai.png" alt="Big Siomai">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Pham_Hanni.png'])">
+              <img src="img/Pham_Hanni.png" alt="Pham Hanni">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Odoriko.png'])">
+              <img src="img/Odoriko.png" alt="Vaundy Odoriko">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Vivarium_Ado.png'])">
+              <img src="img/Vivarium_Ado.png" alt="Vivarium Ado">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Banner.png'])">
+              <img src="img/Banner.png" alt="Game Banner">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Man_Inside.png'])">
+              <img src="img/Man_Inside.png" alt="Man inside the Manunggul Jar">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/Rizal.png'])">
+              <img src="img/Rizal.png" alt="José Rizal Timeline">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+            <div class="project-card-gfx" onclick="openProjectGallery(['img/App_icon.png'])">
+              <img src="img/App_icon.png" alt="App Icon">
+              <div class="gfx-overlay"><span>View Full Size ↗</span></div>
+            </div>
+
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" onclick="moveCarousel('gfx', -1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carousel-dots" id="gfxDots"></div>
+          <button class="carousel-btn" onclick="moveCarousel('gfx', 1)">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label fade-up">Let's connect</p>
+    <h2 class="section-title fade-up">Contact <span>Me</span></h2>
+    <div class="divider fade-up"></div>
+
+    <p class="contact-intro fade-up">
+      Feel free to connect with me, I'm always interested in discussing new projects, creative ideas, or opportunities.
+    </p>
+
+    <div class="contact-links fade-up">
+      <a href="https://www.facebook.com/dan.lopez.cleofe" target="_blank" rel="noopener" class="contact-btn facebook">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        Facebook
+      </a>
+      <a href="mailto:dancleofe16@gmail.com" class="contact-btn gmail">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Gmail
+      </a>
+      <a href="https://www.linkedin.com/in/danjohncleofe16/" target="_blank" rel="noopener" class="contact-btn linkedin">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Dan-Hex" target="_blank" rel="noopener" class="contact-btn github">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.787.605-3.375-1.343-3.375-1.343-.455-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.528 2.341 1.086 2.91.83.092-.644.35-1.086.636-1.336-2.22-.252-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.681-.103-.253-.447-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; <span id="year"></span> <strong>Dan John Cleofe</strong>. All Rights Reserved.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
