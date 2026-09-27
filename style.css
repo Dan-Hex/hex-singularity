@@ -362,8 +362,12 @@ section { position: relative; z-index: 1; }
   color: var(--ink-muted); font-size: 0.82rem; text-align: center; padding: 30px;
 }
 .project-info {
-  flex: 1; padding: 2.5rem 2rem;
-  display: flex; flex-direction: column; justify-content: center;
+  flex: 1;
+  min-width: 0; /* CRITICAL: Prevents flex child from exceeding parent container width */
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .project-tag {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em;
@@ -372,12 +376,21 @@ section { position: relative; z-index: 1; }
 }
 .project-title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem; font-weight: 700; color: var(--ink);
-  margin-bottom: 0.8rem; letter-spacing: -0.01em;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.01em;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .project-desc {
-  font-size: 0.95rem; color: var(--ink-muted); line-height: 1.7;
-  margin-bottom: 1.5rem; text-align: justify;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word; /* Allows long strings to wrap smoothly */
 }
 .project-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .tech-badge {
@@ -741,8 +754,9 @@ footer strong { color: var(--white); }
   /* ── WEB PROJECT CARD MOBILE ── */
   .project-card-web {
     flex-direction: column;
-    width: 100%;
-    min-width: 0; /* Prevents flex children from expanding parent */
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box;
   }
   .project-img-wrap {
     width: 100%;
@@ -750,13 +764,31 @@ footer strong { color: var(--white); }
     max-height: 240px;
   }
   .project-info {
-    padding: 1.5rem;
+    padding: 1.25rem 1rem; /* Reduces huge side padding on small screens */
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
   }
   .project-title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 1.3;
   }
   .project-desc {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    text-align: left; /* Eliminates rigid justification spacing on mobile */
+    margin-bottom: 1.2rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 3px 10px;
   }
 
   /* ── CONTACT ── */
