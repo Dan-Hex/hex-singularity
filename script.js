@@ -78,17 +78,18 @@ function renderCarousel(id) {
     const cards = c.track.querySelectorAll('.project-card-web');
     if (!cards.length) return;
 
-    // Use viewport bounding client width to prevent fractional pixel bleed
-    const viewportWidth = c.track.parentElement.getBoundingClientRect().width;
+    // Reset any previous inline widths so CSS handles sizing
     cards.forEach(card => {
-      card.style.width = `${viewportWidth}px`;
-      card.style.minWidth = `${viewportWidth}px`;
+      card.style.width = '';
+      card.style.minWidth = '';
     });
 
-    const gap = 24; // 1.5rem = 24px
-    const offset = c.index * (viewportWidth + gap);
+    // 1 card width + 24px gap
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 24;
+    const offset = c.index * (cardWidth + gap);
 
-    c.track.style.transition = 'transform 0.45s cubic-bezier(.4,0,.2,1)';
+    c.track.style.transition = 'transform 0.45s cubic-bezier(.4, 0, .2, 1)';
     c.track.style.transform = `translateX(-${offset}px)`;
 
     c.dots.querySelectorAll('.carousel-dot').forEach((d, i) => {
@@ -96,11 +97,10 @@ function renderCarousel(id) {
     });
 
   } else {
+    // GFX Carousel
     const perView = getGfxPerView();
     const cards = c.track.querySelectorAll('.project-card-gfx');
     const viewportWidth = c.track.parentElement.getBoundingClientRect().width;
-    
-    // Exact width factoring in CSS gap
     const gap = 24;
     const cardWidth = (viewportWidth - ((perView - 1) * gap)) / perView;
 
@@ -115,16 +115,16 @@ function renderCarousel(id) {
       c.track.style.transition = 'none';
       c.index = c.total;
       c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
-      c.track.offsetHeight;
+      c.track.offsetHeight; // Force reflow
       c.index = c.total - 1;
     }
 
-    c.track.style.transition = 'transform 0.45s cubic-bezier(.4,0,.2,1)';
+    c.track.style.transition = 'transform 0.45s cubic-bezier(.4, 0, .2, 1)';
     c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
 
     if (c.index >= c.total) {
       setTimeout(() => {
-        if (c.index >= c.total) { 
+        if (c.index >= c.total) {
           c.track.style.transition = 'none';
           c.index = c.index - c.total;
           c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
