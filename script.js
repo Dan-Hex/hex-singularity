@@ -65,19 +65,28 @@ function buildDots(id) {
 }
 
 function getGfxPerView() {
-  return window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  if (window.innerWidth <= 600) return 1;
+  if (window.innerWidth <= 900) return 2;
+  return 3;
 }
 
 function renderCarousel(id) {
   const c = carousels[id];
+  if (!c.track) return;
 
   if (id === 'web') {
-    // --- WEB PROJECTS LOGIC ---
     const cards = c.track.querySelectorAll('.project-card-web');
     if (!cards.length) return;
-    // Use actual card width + gap for precise offset (handles mobile correctly)
-    const cardWidth = cards[0].offsetWidth;
-    const offset = c.index * (cardWidth + 24);
+
+    // Use viewport bounding client width to prevent fractional pixel bleed
+    const viewportWidth = c.track.parentElement.getBoundingClientRect().width;
+    cards.forEach(card => {
+      card.style.width = `${viewportWidth}px`;
+      card.style.minWidth = `${viewportWidth}px`;
+    });
+
+    const gap = 24; // 1.5rem = 24px
+    const offset = c.index * (viewportWidth + gap);
 
     c.track.style.transition = 'transform 0.45s cubic-bezier(.4,0,.2,1)';
     c.track.style.transform = `translateX(-${offset}px)`;
@@ -87,44 +96,42 @@ function renderCarousel(id) {
     });
 
   } else {
-    // --- GFX SEAMLESS LOOP LOGIC ---
     const perView = getGfxPerView();
     const cards = c.track.querySelectorAll('.project-card-gfx');
+    const viewportWidth = c.track.parentElement.getBoundingClientRect().width;
+    
+    // Exact width factoring in CSS gap
+    const gap = 24;
+    const cardWidth = (viewportWidth - ((perView - 1) * gap)) / perView;
 
-    // Dynamically update card widths
     cards.forEach(el => {
-      el.style.minWidth = `calc(${100/perView}% - ${(perView-1)*1.5/perView}rem)`;
-      el.style.width = `calc(${100/perView}% - ${(perView-1)*1.5/perView}rem)`;
+      el.style.minWidth = `${cardWidth}px`;
+      el.style.width = `${cardWidth}px`;
     });
 
-    // Calculate exact slide distance (1 Card width + 24px CSS gap)
-    const moveAmount = cards[0].offsetWidth + 24;
+    const moveAmount = cardWidth + gap;
 
-    // Handle Backwards Seamless Loop (Clicking the left arrow at the start)
     if (c.index < 0) {
-       c.track.style.transition = 'none';
-       c.index = c.total; // Instantly jump to the cloned set at the end
-       c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
-       c.track.offsetHeight; // Force the browser to register the jump
-       c.index = c.total - 1; // Set up the smooth slide to the target card
+      c.track.style.transition = 'none';
+      c.index = c.total;
+      c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
+      c.track.offsetHeight;
+      c.index = c.total - 1;
     }
 
-    // Apply the smooth slide
     c.track.style.transition = 'transform 0.45s cubic-bezier(.4,0,.2,1)';
     c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
 
-    // Handle Forwards Seamless Loop (Auto-play hitting the end)
     if (c.index >= c.total) {
       setTimeout(() => {
         if (c.index >= c.total) { 
           c.track.style.transition = 'none';
-          c.index = c.index - c.total; // Silently snap back to the true start
+          c.index = c.index - c.total;
           c.track.style.transform = `translateX(-${c.index * moveAmount}px)`;
         }
-      }, 450); // This waits exactly as long as the CSS transition takes
+      }, 450);
     }
 
-    // Update dots (Mapping the clones back to the original dots)
     let activeDot = c.index % c.total;
     if (activeDot < 0) activeDot = c.total - 1;
     c.dots.querySelectorAll('.carousel-dot').forEach((d, i) => {

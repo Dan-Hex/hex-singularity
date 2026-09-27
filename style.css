@@ -301,13 +301,17 @@ section { position: relative; z-index: 1; }
 .carousel-wrap { position: relative; }
 .carousel-viewport {border-radius: var(--radius); overflow: hidden; }
 .carousel-track {
-  display: flex; gap: 1.5rem;
+  display: flex; 
+  gap: 1.5rem;
+  width: max-content; /* Allows track to stretch only internally */
   transition: transform 0.45s cubic-bezier(.4,0,.2,1);
 }
+
 .carousel-controls {
   display: flex; align-items: center; gap: 1rem;
   margin-top: 1.5rem; justify-content: center;
 }
+
 .carousel-btn {
   width: 44px; height: 44px; border-radius: 50%;
   background: var(--white); border: 2px solid var(--green-pale);
@@ -332,15 +336,19 @@ section { position: relative; z-index: 1; }
 
 /* WEB PROJECT CARD */
 .project-card-web {
-  min-width: 100%;
   width: 100%;
-  background: var(--white); border-radius: var(--radius);
-  box-shadow: var(--shadow); overflow: hidden;
-  display: flex; flex-direction: row;
+  max-width: 100%;
+  flex: 0 0 100%; /* Fixes min-width blowout inside flexbox */
+  background: var(--white); 
+  border-radius: var(--radius);
+  box-shadow: var(--shadow); 
+  overflow: hidden;
+  display: flex; 
+  flex-direction: row;
   border: 1px solid var(--green-pale);
   transition: box-shadow var(--transition), transform var(--transition);
-  flex-shrink: 0;
 }
+
 .project-card-web:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
 .project-img-wrap {
   width: 55%; flex-shrink: 0;
@@ -381,10 +389,12 @@ section { position: relative; z-index: 1; }
 
 /* GRAPHIC DESIGN CARD */
 .project-card-gfx {
-  min-width: calc(33.333% - 1rem);
-  border-radius: var(--radius); overflow: hidden;
+  flex-shrink: 0;
+  border-radius: var(--radius); 
+  overflow: hidden;
   background: var(--green-faint);
-  cursor: pointer; position: relative;
+  cursor: pointer; 
+  position: relative;
   aspect-ratio: 3/4;
   box-shadow: var(--shadow);
   transition: box-shadow var(--transition), transform var(--transition);
@@ -495,8 +505,14 @@ section { position: relative; z-index: 1; }
 }
 
 /* CATEGORY PANEL */
-.category-panel { display: none; }
-.category-panel.active { display: block; }
+.category-panel {
+  display: none;
+  width: 100%;
+  max-width: 100%;
+}
+.category-panel.active { 
+  display: block; 
+}
 
 /* ─────────────── CONTACT ─────────────── */
 #contact { background: var(--white); }
@@ -645,10 +661,11 @@ footer strong { color: var(--white); }
   }
 
   /* ── SECTION SHARED ── */
-  .section-inner { 
-    padding: 60px 5%;
-    align-items: center;
-    text-align: center;
+  .section-inner {
+    padding: 60px 4%;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
   .section-title,
   .section-label {
@@ -681,13 +698,20 @@ footer strong { color: var(--white); }
   }
 
   /* ── CAROUSEL FIXES ── */
-  .carousel-wrap {
-    width: 100%;
-  }
-  .carousel-viewport {
-    width: 100%;
-    overflow: hidden;
-  }
+  .carousel-wrap { 
+  position: relative; 
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.carousel-viewport {
+  width: 100%;
+  max-width: 100%;
+  border-radius: var(--radius); 
+  overflow: hidden; /* Hard clips anything outside the card view */
+}
+
   .carousel-controls { 
     gap: 0.5rem;
     justify-content: center;
@@ -717,6 +741,8 @@ footer strong { color: var(--white); }
   /* ── WEB PROJECT CARD MOBILE ── */
   .project-card-web {
     flex-direction: column;
+    width: 100%;
+    min-width: 0; /* Prevents flex children from expanding parent */
   }
   .project-img-wrap {
     width: 100%;
